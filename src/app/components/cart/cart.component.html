@@ -1,0 +1,47 @@
+<div class="container mt-5  ">
+  <div class="row">
+    <h2 class="">Detalles de la compra</h2>
+    <hr>
+    <div class="col-7">
+      <div *ngFor="let articulo of articulos; let i = index" class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img [src]="articulo.urlImagen" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title mb-4">
+                {{ articulo.nombre }}
+              </h5>
+              <div class="mb-3">
+                Cantidad: <input type="number" name="cantdad" id="cantidad" [ngModel]="cantidad" value="1" min="1"
+                  max="12">
+              </div>
+              <small class="d-block"> Precio: <b>{{ cantidad * articulo.precio | currency }}</b> </small>
+              <p class="card-text"><small class="text-muted">
+                  <a (click)="eliminarItem(articulo)">eliminar</a>
+                </small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header">
+          Carrito
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><b>Subtotal</b></h5>
+          <p class="card-text">
+            Nro. productos: {{ articulos.length }}
+          </p>
+          <p class="card-text">
+            Total:
+          </p>
+          <a class="btn btn-success" (click)="pagar()">Proceder al pago</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

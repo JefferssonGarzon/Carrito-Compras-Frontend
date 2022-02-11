@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+        <div class="col formulario">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Registrarse</h2>
+                    </div>
+                    <form [formGroup]="regForm" (ngSubmit)="registrarUsuario()">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" formControlName="nombre">
+                            <small
+                                *ngIf="regForm.get('nombre').hasError('required') && (regForm.get('nombre').dirty || regForm.get('nombre').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                            <small *ngIf="regForm.get('nombre').hasError('minlength')" class="text-danger">
+                                *Minimo 3 caracteres
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" name="apellido" id="apellido" class="form-control" formControlName="apellido">
+                            <small
+                                *ngIf="regForm.get('apellido').hasError('required') && (regForm.get('apellido').dirty || regForm.get('apellido').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                            <small *ngIf="regForm.get('apellido').hasError('minlength')" class="text-danger">
+                                *Minimo 4 caracteres
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" class="form-control" formControlName="email">
+                            <small
+                                *ngIf="regForm.get('email').hasError('required') && (regForm.get('email').dirty || regForm.get('email').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                            <small *ngIf="regForm.get('email').hasError('email')" class="text-danger">
+                                *El email no es valido
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">telefono</label>
+                            <input type="text" name="telefono" id="telefono" class="form-control" formControlName="telefono">
+                            <small
+                                *ngIf="regForm.get('telefono').hasError('required') && (regForm.get('telefono').dirty || regForm.get('telefono').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                            <small *ngIf="regForm.get('telefono').hasError('minlength')" class="text-danger">
+                                *Debe contener 10 caracteres
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" formControlName="username">
+                            <small
+                                *ngIf="regForm.get('username').hasError('required') && (regForm.get('username').dirty || regForm.get('username').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                        </div>  
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" formControlName="password">
+                            <small
+                                *ngIf="regForm.get('password').hasError('required') && (regForm.get('password').dirty || regForm.get('password').touched)"
+                                class="text-danger">
+                                *El campo es requerido
+                            </small>
+                            <small *ngIf="regForm.get('password').hasError('minlength')" class="text-danger">
+                                *Minimo 5 caracteres
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rol" id="rol1" formControlName="rol" value="1">
+                                <label class="form-check-label" for="rol1">Administrador</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rol" id="rol2" formControlName="rol" value="2">
+                                <label class="form-check-label" for="rol2">Usuario</label>
+                              </div>
+                        </div>
+                        <div class="form-group boton">
+                            <button routerLink="/login" class="btn btn-warning me-4">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i> Atras
+                            </button>
+                            <button type="submit" class="btn btn-success" [disabled]="!regForm.valid">
+                                <i class="fa fa-arrow-right"></i> Registrarse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col m-auto text-center">
+            <i class="fas fa-user-plus fa-7x d-block"></i>
+            <h1>Registrarse</h1>
+        </div>
+    </div>
+</div>
